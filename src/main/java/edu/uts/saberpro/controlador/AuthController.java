@@ -1,7 +1,9 @@
 package edu.uts.saberpro.controlador;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
@@ -9,10 +11,15 @@ import org.springframework.security.core.context.SecurityContextHolder;
 public class AuthController {
 
     // Página de login
-    @GetMapping("/login")
-    public String login() {
-        return "login"; // templates/login.html
-    }
+	@GetMapping("/login")
+	public String login(@RequestParam(value = "logout", required = false) String logout,
+	                    Model model) {
+	    if (logout != null) {
+	        model.addAttribute("mensaje", "Sesión cerrada correctamente");
+	    }
+	    return "login"; // templates/login.html
+	}
+
     @GetMapping("/")
     public String login1() {
         return "login"; // templates/login.html
