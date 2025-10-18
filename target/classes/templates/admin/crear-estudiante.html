@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Estudiante</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #eef2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
+            color: #003366;
+            margin-top: 40px;
+            position: relative;
+        }
+
+        h2::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 3px;
+            background-color: #003366;
+            margin: 10px auto 20px;
+            border-radius: 5px;
+        }
+
+        form {
+            background: white;
+            padding: 40px 60px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            width: 700px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px 40px;
+        }
+
+        input {
+            padding: 10px;
+            width: 100%;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        .acciones {
+            grid-column: span 2;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* ✅ Unificamos estilo para botones y enlaces */
+        button, 
+        a.cancelar {
+            display: inline-block;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px 10px 0 10px;
+            font-size: 14px;
+            line-height: 1;
+            text-decoration: none;
+            min-width: 120px; /* mismos tamaños mínimos */
+            text-align: center;
+        }
+
+        button {
+            background-color: #003366;
+        }
+
+        button:hover {
+            background-color: #0055aa;
+        }
+
+        a.cancelar {
+            background-color: #d9534f;
+        }
+
+        a.cancelar:hover {
+            background-color: #c9302c;
+        }
+
+        .link-lista {
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .link-lista a {
+            color: #003366;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .link-lista a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h2>Registrar Estudiante</h2>
+
+    <form th:action="@{/admin/guardar-estudiante}" th:object="${usuario}" method="post">
+        <input type="hidden" th:value="'ESTUDIANTE'" th:field="*{rol}" />
+
+        <input type="text" th:field="*{documento}" placeholder="Número de documento" required>
+        <input type="text" th:field="*{numeroRegistro}" placeholder="Número de registro" required>
+        <input type="text" th:field="*{primerApellido}" placeholder="Primer Apellido" required>
+        <input type="text" th:field="*{segundoApellido}" placeholder="Segundo Apellido">
+        <input type="text" th:field="*{primerNombre}" placeholder="Primer Nombre" required>
+        <input type="text" th:field="*{segundoNombre}" placeholder="Segundo Nombre">
+        <input type="email" th:field="*{correo}" placeholder="Correo electrónico" required>
+        <input type="text" th:field="*{telefono}" placeholder="Número Telefónico" required>
+        <input type="password" th:field="*{password}" placeholder="Contraseña" required>
+
+        <div class="acciones">
+            <button type="submit">Guardar</button>
+            <a href="/admin/inicio" class="cancelar">Cancelar</a>
+        </div>
+    </form>
+
+    <div class="link-lista">
+        <a href="/admin/listar-estudiantes">↩ Ir a la lista</a>
+    </div>
+</body>
+</html>

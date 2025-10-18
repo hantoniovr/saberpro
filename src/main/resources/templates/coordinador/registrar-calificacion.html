@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Calificación - Coordinador</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #eef2f5; margin: 0; padding: 20px; }
+        h1 { text-align: center; color: #003366; }
+        form { max-width: 700px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        label { display: block; margin-top: 15px; font-weight: bold; }
+        input { width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; }
+        button { margin-top: 20px; padding: 10px 20px; background-color: #003366; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background-color: #0055aa; }
+        a.volver { display: inline-block; margin-top: 20px; padding: 8px 15px; background-color: #6c757d; color: white; border-radius: 5px; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>✍ Registrar / Editar Calificación</h1>
+
+    <form th:action="@{/coordinador/guardar-calificacion}" th:object="${calificacion}" method="post">
+        <input type="hidden" th:field="*{id}" />
+        <input type="hidden" th:field="*{numeroRegistro}" />
+
+        <label>Puntaje Global:</label>
+        <input type="number" th:field="*{puntajeGlobal}" min="-1" max="300" required />
+
+        <label>Comunicación Escrita:</label>
+        <input type="number" th:field="*{comunicacionEscrita}" min="-1" max="300" required />
+
+        <label>Razonamiento Cuantitativo:</label>
+        <input type="number" th:field="*{razonamientoCuantitativo}" min="-1" max="300" required />
+
+        <label>Lectura Crítica:</label>
+        <input type="number" th:field="*{lecturaCritica}" min="-1" max="300" required />
+
+        <label>Competencias Ciudadanas:</label>
+        <input type="number" th:field="*{competenciasCiudadanas}" min="-1" max="300" required />
+
+        <label>Inglés:</label>
+        <input type="number" th:field="*{ingles}" min="-1" max="300" required />
+
+        <label>Formulación de Proyectos de Ingeniería:</label>
+        <input type="number" th:field="*{formulacionProyectosIngenieria}" min="-1" max="300" required />
+
+        <label>Pensamiento Científico:</label>
+        <input type="number" th:field="*{pensamientoCientifico}" min="-1" max="300" required />
+
+        <label>Diseño de Software:</label>
+        <input type="number" th:field="*{disenoSoftware}" min="-1" max="300" required />
+
+        <button type="submit">💾 Guardar</button>
+    </form>
+
+    <a class="volver" href="/coordinador/listar-calificaciones">⬅ Volver al Listado</a>
+</body>
+</html>

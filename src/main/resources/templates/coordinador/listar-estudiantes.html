@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Estudiantes - Coordinador</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f6f9; margin: 0; padding: 20px; }
+        h1 { text-align: center; color: #003366; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: center; }
+        th { background-color: #003366; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        a.boton { padding: 6px 12px; border-radius: 5px; text-decoration: none; color: white; }
+        a.calificar { background-color: #28a745; }
+        a.volver { background-color: #6c757d; margin-top: 20px; display: inline-block; }
+    </style>
+</head>
+<body>
+    <h1>👩‍🎓 Listado de Estudiantes</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Documento</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Número Registro</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="u : ${estudiantes}">
+                <td th:text="${u.documento}"></td>
+                <td th:text="${u.primerNombre + ' ' + u.segundoNombre + ' ' + u.primerApellido + ' ' + u.segundoApellido}"></td>
+                <td th:text="${u.correo}"></td>
+                <td th:text="${u.numeroRegistro}"></td>
+                <td>
+                    <!-- Botón para registrar/editar calificación -->
+                    <a class="boton calificar" th:href="@{'/coordinador/registrar-calificacion/' + ${u.numeroRegistro}}">
+                        Registrar/Editar Calificación
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="boton volver" href="/coordinador/inicio">⬅ Volver al Panel</a>
+</body>
+</html>

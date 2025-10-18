@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio Estudiante - Saber Pro</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #eef2f5; margin: 0; padding: 0; }
+        header { background-color: #003366; color: white; padding: 20px; text-align: center; position: relative; }
+        h1 { margin: 0; }
+        .logout-btn {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            background-color: #d9534f;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .logout-btn:hover { background-color: #c9302c; }
+        main { padding: 30px; max-width: 900px; margin: auto; }
+        .estado { font-size: 18px; font-weight: bold; margin: 20px 0; }
+        .aprobado { color: green; }
+        .reprobado { color: red; }
+        .anulado { color: orange; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: center; }
+        th { background-color: #003366; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        .boton { background-color: #003366; color: white; padding: 6px 12px; border-radius: 5px; text-decoration: none; }
+        .boton:hover { background-color: #0055aa; }
+        footer { margin-top: 40px; text-align: center; font-size: 13px; color: #555; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Bienvenido/a</h1>
+    <a th:href="@{/logout}" class="logout-btn">Cerrar Sesión</a>
+</header>
+
+<main>
+    <!-- Estado del examen -->
+	<div class="estado"
+	     th:classappend="${calificacion.puntajeGlobal == -1 ? 'anulado' : (calificacion.puntajeGlobal < 80 ? 'reprobado' : 'aprobado')}">
+
+        <span th:if="${calificacion.puntajeGlobal == -1}">❌ Examen Anulado</span>
+        <span th:if="${calificacion.puntajeGlobal != -1 and calificacion.puntajeGlobal < 80}">❌ Reprobó el examen (puntaje insuficiente)</span>
+        <span th:if="${calificacion.puntajeGlobal >= 80}">✅ Aprobó el examen</span>
+    </div>
+
+    <!-- Beneficios -->
+    <div th:if="${beneficio != null}">
+        <p><strong>Beneficio obtenido:</strong> <span th:text="${beneficio}"></span></p>
+    </div>
+
+    <!-- Tabla de resultados -->
+    <table>
+        <thead>
+            <tr>
+                <th>Número de Registro</th>
+                <th>Puntaje Global</th>
+                <th>Nivel Global</th>
+                <th>Inglés</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td th:text="${calificacion.numeroRegistro}"></td>
+                <td th:text="${calificacion.puntajeGlobal}"></td>
+                <td th:text="${calificacion.nivelGlobal}"></td>
+                <td th:text="${calificacion.nivelIngles == 1 ? 'A1' :
+                             (calificacion.nivelIngles == 2 ? 'A2' :
+                             (calificacion.nivelIngles == 3 ? 'B1' : 'B2'))}"></td>
+                <td>
+                    <a class="boton" th:href="@{'/estudiante/detalle/' + ${calificacion.numeroRegistro}}">Más Detalles</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</main>
+
+<footer>
+    Sistema Saber Pro © 2025 - Universidad de Santander (UTS)
+</footer>
+
+</body>
+</html>

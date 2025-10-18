@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Calificaciones - Coordinador</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f6f9; margin: 0; padding: 20px; }
+        h1 { text-align: center; color: #003366; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: center; }
+        th { background-color: #003366; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        a.boton { padding: 6px 12px; border-radius: 5px; text-decoration: none; color: white; }
+        a.editar { background-color: #007bff; }
+        a.eliminar { background-color: #d9534f; }
+        a.volver { background-color: #6c757d; margin-top: 20px; display: inline-block; }
+    </style>
+</head>
+<body>
+    <h1>📊 Gestión de Calificaciones</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Documento</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Número Registro</th>
+                <th>Puntaje Global</th>
+                <th>Nivel Global</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="u : ${estudiantes}">
+                <td th:text="${u.documento}"></td>
+                <td th:text="${u.primerNombre + ' ' + u.segundoNombre + ' ' + u.primerApellido + ' ' + u.segundoApellido}"></td>
+                <td th:text="${u.correo}"></td>
+                <td th:text="${u.numeroRegistro}"></td>
+
+                <!-- Puntaje Global -->
+                <td th:text="${mapaCalificaciones[u.numeroRegistro] != null ? mapaCalificaciones[u.numeroRegistro].puntajeGlobal : 'Sin registro'}"></td>
+
+                <!-- Nivel Global -->
+                <td th:text="${mapaCalificaciones[u.numeroRegistro] != null ? mapaCalificaciones[u.numeroRegistro].nivelGlobal : '-'}"></td>
+
+                <!-- Acciones -->
+                <td>
+                    <a class="boton editar" th:href="@{'/coordinador/registrar-calificacion/' + ${u.numeroRegistro}}">Editar</a>
+                    <a class="boton eliminar"
+                       th:if="${mapaCalificaciones[u.numeroRegistro] != null}"
+                       th:href="@{'/coordinador/eliminar-calificacion/' + ${mapaCalificaciones[u.numeroRegistro].id}}"
+                       onclick="return confirm('¿Seguro que deseas eliminar esta calificación?');">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="boton volver" href="/coordinador/inicio">⬅ Volver al Panel</a>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel del Coordinador - Saber Pro</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #eef2f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 25px 0;
+            text-align: center;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 26px;
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 50px 20px;
+            gap: 40px;
+        }
+
+        .card {
+            background-color: white;
+            width: 280px;
+            padding: 30px 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            color: #003366;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .boton {
+            background-color: #003366;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .boton:hover {
+            background-color: #0055aa;
+        }
+
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 13px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Panel del Coordinador</h1>
+        <p>Bienvenido al sistema de gestión Saber Pro</p>
+    </header>
+
+    <main>
+        <!-- Calificaciones Saber Pro -->
+        <div class="card">
+            <h3>📊 Calificaciones Saber Pro</h3>
+            <p>Consulta, registra o modifica los resultados de las pruebas Saber Pro de cada estudiante.</p>
+            <a th:href="@{/coordinador/listar-calificaciones}" class="boton">Gestionar Calificaciones</a>
+        </div>
+
+        <!-- Salir -->
+        <div class="card">
+            <h3>🚪 Cerrar Sesión</h3>
+            <p>Salir de tu cuenta de coordinador de manera segura.</p>
+            <a th:href="@{/logout}" class="boton" style="background-color:#d9534f;">Cerrar Sesión</a>
+        </div>
+    </main>
+
+    <footer>
+        Sistema Saber Pro © 2025 - Universidad de Santander (UTS)
+    </footer>
+
+</body>
+</html>

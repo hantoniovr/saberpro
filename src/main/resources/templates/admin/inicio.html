@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel Administrador - Saber Pro</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            background-color: #f2f5fa; 
+            margin: 0; 
+        }
+        header { 
+            background-color: #003366; 
+            color: white; 
+            padding: 20px; 
+            text-align: center; 
+        }
+        nav { 
+            background-color: #0055aa; 
+            padding: 10px; 
+            text-align: right; 
+        }
+        nav a {
+            color: white; 
+            text-decoration: none; 
+            padding: 8px 16px; 
+            border-radius: 5px; 
+            background-color: #c0392b; 
+            font-weight: bold;
+        }
+        nav a:hover { 
+            background-color: #e74c3c; 
+        }
+        main { 
+            padding: 40px; 
+            text-align: center; 
+        }
+        .card {
+            display: inline-block; 
+            width: 300px; 
+            background: white; 
+            margin: 20px;
+            padding: 20px; 
+            border-radius: 10px; 
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            vertical-align: top;
+        }
+        .card img {
+            width: 80px; 
+            margin-bottom: 15px;
+        }
+        .card a {
+            display: block;
+            margin-top: 10px;
+            background-color: #003366;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .card a:hover { background-color: #0055aa; }
+        footer { 
+            margin-top: 40px; 
+            text-align: center; 
+            color: #888; 
+            padding: 10px; 
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Panel del Administrador</h1>
+        <p>Gestión de Coordinadores y Estudiantes</p>
+    </header>
+
+    <nav>
+        <a th:href="@{/logout}">Cerrar Sesión</a>
+    </nav>
+
+    <main>
+        <div class="card">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Coordinador">
+            <h3>Coordinadores</h3>
+            <a th:href="@{/admin/crear-coordinador}">Registrar Nuevo</a>
+            <a th:href="@{/admin/listar-coordinadores}">Ir a la Lista</a>
+        </div>
+
+        <div class="card">
+            <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Estudiante">
+            <h3>Estudiantes</h3>
+            <a th:href="@{/admin/crear-estudiante}">Registrar Nuevo</a>
+            <a th:href="@{/admin/listar-estudiantes}">Ir a la Lista</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>Universidad Tecnológica de Santander - Sistema Saber Pro</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Coordinadores - Saber Pro</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f8fafc;
+            text-align: center;
+            margin: 0;
+            padding: 30px;
+        }
+
+        h2 {
+            color: #003366;
+            margin-bottom: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 90%;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #003366;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        a.boton {
+            background-color: #003366;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 2px;
+            display: inline-block;
+            transition: 0.2s;
+        }
+
+        a.boton:hover {
+            background-color: #0055aa;
+        }
+
+        a.eliminar {
+            background-color: #d9534f;
+        }
+
+        a.eliminar:hover {
+            background-color: #c9302c;
+        }
+
+        .acciones {
+            text-align: center;
+        }
+
+        .acciones a {
+            margin: 0 5px;
+        }
+
+        .botones-inferiores {
+            margin-top: 25px;
+        }
+
+        .botones-inferiores a {
+            margin: 0 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Lista de Coordinadores Registrados</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Documento</th>
+                <th>Apellidos</th>
+                <th>Nombres</th>
+                <th>Correo</th>
+                <th>Teléfono</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="usuario : ${coordinadores}">
+                <td th:text="${usuario.documento}"></td>
+                <td th:text="${usuario.primerApellido + ' ' + usuario.segundoApellido}"></td>
+                <td th:text="${usuario.primerNombre + ' ' + usuario.segundoNombre}"></td>
+                <td th:text="${usuario.correo}"></td>
+                <td th:text="${usuario.telefono}"></td>
+                <td class="acciones">
+                    <a th:href="@{'/admin/editar-coordinador/' + ${usuario.id}}" class="boton">Editar</a>
+                    <a th:href="@{'/admin/eliminar/' + ${usuario.id}}"
+                       class="boton eliminar"
+                       onclick="return confirm('¿Seguro que deseas eliminar este coordinador?')">
+                       Eliminar
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="botones-inferiores">
+        <a href="/admin/crear-coordinador" class="boton">Registrar Nuevo</a>
+        <a href="/admin/inicio" class="boton">Volver al Inicio</a>
+    </div>
+</body>
+</html>

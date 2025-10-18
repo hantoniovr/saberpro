@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Saber Pro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef1f5;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h2 {
+            color: #003366;
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 40px 50px;
+            border-radius: 12px;
+            display: inline-block;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        input {
+            display: block;
+            width: 280px;
+            margin: 15px auto;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #003366;
+            box-shadow: 0 0 5px rgba(0,51,102,0.3);
+        }
+
+        button {
+            background-color: #003366;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0055aa;
+            transform: scale(1.05);
+        }
+
+        .mensaje {
+            color: red;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        .mensaje.success {
+            color: green;
+        }
+
+        footer {
+            margin-top: 50px;
+            padding: 15px 0;
+            text-align: center;
+            color: #888;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Ingreso al Sistema Saber Pro</h2>
+
+    <form th:action="@{/login}" method="post">
+        <input type="text" name="username" placeholder="Correo electrónico" required>
+        <input type="password" name="password" placeholder="Contraseña" required>
+        <button type="submit">Ingresar</button>
+    </form>
+
+    <p th:if="${param.error}" class="mensaje">Usuario o contraseña incorrectos</p>
+    <p th:if="${param.logout}" class="mensaje success">Has cerrado sesión correctamente</p>
+
+    <footer>
+        &copy; 2025 Humberto Villamizar Rodriguez. Todos los derechos reservados.
+    </footer>
+</body>
+</html>

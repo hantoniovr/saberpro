@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle de Calificaciones - Saber Pro</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #eef2f5; margin: 0; padding: 0; }
+        header { background-color: #003366; color: white; padding: 20px; text-align: center; }
+        h1 { margin: 0; }
+        main { padding: 30px; max-width: 1000px; margin: auto; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: center; }
+        th { background-color: #003366; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        .boton { background-color: #003366; color: white; padding: 8px 15px; border-radius: 5px; text-decoration: none; }
+        .boton:hover { background-color: #0055aa; }
+        footer { margin-top: 40px; text-align: center; font-size: 13px; color: #555; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Detalle de Calificaciones</h1>
+    
+</header>
+
+<main>
+    <table>
+        <thead>
+            <tr>
+                <th>Área</th>
+                <th>Puntaje</th>
+                <th>Nivel</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr>
+                <td>Comunicación Escrita</td>
+                <td th:text="${calificacion.comunicacionEscrita}"></td>
+                <td th:text="${calificacion.nivelComunicacionEscrita}"></td>
+            </tr>
+            <tr>
+                <td>Razonamiento Cuantitativo</td>
+                <td th:text="${calificacion.razonamientoCuantitativo}"></td>
+                <td th:text="${calificacion.nivelRazonamientoCuantitativo}"></td>
+            </tr>
+            <tr>
+                <td>Lectura Crítica</td>
+                <td th:text="${calificacion.lecturaCritica}"></td>
+                <td th:text="${calificacion.nivelLecturaCritica}"></td>
+            </tr>
+            <tr>
+                <td>Competencias Ciudadanas</td>
+                <td th:text="${calificacion.competenciasCiudadanas}"></td>
+                <td th:text="${calificacion.nivelCompetenciasCiudadanas}"></td>
+            </tr>
+            <tr>
+                <td>Inglés</td>
+                <td th:text="${calificacion.ingles}"></td>
+                <td th:text="${calificacion.nivelIngles}"></td>
+            </tr>
+            <tr>
+                <td>Formulación de Proyectos de Ingeniería</td>
+                <td th:text="${calificacion.formulacionProyectosIngenieria}"></td>
+                <td th:text="${calificacion.nivelFormulacionProyectosIngenieria}"></td>
+            </tr>
+            <tr>
+                <td>Pensamiento Científico</td>
+                <td th:text="${calificacion.pensamientoCientifico}"></td>
+                <td th:text="${calificacion.nivelPensamientoCientifico}"></td>
+            </tr>
+            <tr>
+                <td>Diseño de Software</td>
+                <td th:text="${calificacion.disenoSoftware}"></td>
+                <td th:text="${calificacion.nivelDisenoSoftware}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div style="margin-top:20px;">
+        <a class="boton" th:href="@{/estudiante/inicio}">⬅ Volver al Inicio</a>
+    </div>
+</main>
+
+<footer>
+    Sistema Saber Pro © 2025 - Universidad de Santander (UTS)
+</footer>
+
+</body>
+</html>

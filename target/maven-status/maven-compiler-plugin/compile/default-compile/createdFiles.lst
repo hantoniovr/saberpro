@@ -1,0 +1,17 @@
+edu\uts\saberpro\seguridad\WebSecurityConfig.class
+edu\uts\saberpro\MongoTestRunner.class
+edu\uts\saberpro\controlador\AdminController.class
+edu\uts\saberpro\repositorio\UsuarioRepositorio.class
+edu\uts\saberpro\entidad\Calificacion.class
+edu\uts\saberpro\controlador\EstudianteController.class
+edu\uts\saberpro\servicio\CalificacionServicio.class
+edu\uts\saberpro\controlador\CoordinadorController.class
+edu\uts\saberpro\entidad\Usuario.class
+edu\uts\saberpro\SaberproApplication.class
+edu\uts\saberpro\seguridad\CustomUserDetailsService.class
+edu\uts\saberpro\controlador\UsuarioController.class
+edu\uts\saberpro\servicio\UsuarioServicio.class
+edu\uts\saberpro\repositorio\CalificacionRepository.class
+edu\uts\saberpro\controlador\CalificacionController.class
+edu\uts\saberpro\controlador\AuthController.class
+edu\uts\saberpro\entidad\Rol.class

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Estudiantes Registrados</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f9fbff; margin: 0; }
+        header { background-color: #003366; color: white; padding: 20px; text-align: center; }
+        table { width: 95%; margin: 30px auto; border-collapse: collapse; background-color: white; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+        th { background-color: #0055aa; color: white; }
+        a.boton { padding: 6px 12px; border-radius: 5px; text-decoration: none; color: white; background-color: #007bff; margin: 0 3px; }
+        a.eliminar { background-color: #d9534f; }
+        a.editar { background-color: #5cb85c; }
+        a.boton:hover { opacity: 0.8; }
+        nav { text-align: center; margin: 20px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Lista de Estudiantes</h1>
+    </header>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Documento</th>
+                <th>Apellidos</th>
+                <th>Nombres</th>
+                <th>Correo</th>
+                <th>Teléfono</th>
+                <th>N° Registro</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="u : ${estudiantes}">
+                <td th:text="${u.documento}"></td>
+                <td th:text="${u.primerApellido + ' ' + u.segundoApellido}"></td>
+                <td th:text="${u.primerNombre + ' ' + u.segundoNombre}"></td>
+                <td th:text="${u.correo}"></td>
+                <td th:text="${u.telefono}"></td>
+                <td th:text="${u.numeroRegistro}"></td>
+                <td>
+                    <a class="boton editar" th:href="@{'/admin/editar-estudiante/' + ${u.id}}">Editar</a>
+                    <a class="boton eliminar" th:href="@{'/admin/eliminar/' + ${u.id}}" 
+                       onclick="return confirm('¿Seguro que deseas eliminar este estudiante?');">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <nav>
+        <a class="boton" href="/admin/crear-estudiante">Registrar Nuevo Estudiante</a>
+        <a class="boton" href="/admin/inicio">Volver al inicio</a>
+    </nav>
+</body>
+</html>

@@ -1,0 +1,17 @@
+C:\TRABAJOS\saberpro\src\main\java\edu\uts\saberpro\controlador\AdminController.java
+C:\TRABAJOS\saberpro\src\main\java\edu\uts\saberpro\controlador\AuthController.java
+C:\TRABAJOS\saberpro\src\main\java\edu\uts\saberpro\controlador\CalificacionController.java
+C:\TRABAJOS\saberpro\src\main\java\edu\uts\saberpro\controlador\CoordinadorController.java
+C:\TRABAJOS\saberpro\src\main\java\edu\uts\saberpro\controlador\EstudianteController.java
+C:\TRABAJOS\saberpro\src\main\java\edu\uts\saberpro\controlador\UsuarioController.java
+C:\TRABAJOS\saberpro\src\main\java\edu\uts\saberpro\entidad\Calificacion.java
+C:\TRABAJOS\saberpro\src\main\java\edu\uts\saberpro\entidad\Rol.java
+C:\TRABAJOS\saberpro\src\main\java\edu\uts\saberpro\entidad\Usuario.java
+C:\TRABAJOS\saberpro\src\main\java\edu\uts\saberpro\MongoTestRunner.java
+C:\TRABAJOS\saberpro\src\main\java\edu\uts\saberpro\repositorio\CalificacionRepository.java
+C:\TRABAJOS\saberpro\src\main\java\edu\uts\saberpro\repositorio\UsuarioRepositorio.java
+C:\TRABAJOS\saberpro\src\main\java\edu\uts\saberpro\SaberproApplication.java
+C:\TRABAJOS\saberpro\src\main\java\edu\uts\saberpro\seguridad\CustomUserDetailsService.java
+C:\TRABAJOS\saberpro\src\main\java\edu\uts\saberpro\seguridad\WebSecurityConfig.java
+C:\TRABAJOS\saberpro\src\main\java\edu\uts\saberpro\servicio\CalificacionServicio.java
+C:\TRABAJOS\saberpro\src\main\java\edu\uts\saberpro\servicio\UsuarioServicio.java
